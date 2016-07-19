@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="userControllers.ShowingController">
+   <children>
+      <Pane prefHeight="768.0" prefWidth="1024.0" styleClass="background">
+         <children>
+            <ListView fx:id="listView_moviePoster" layoutX="12.0" layoutY="64.0" onMouseClicked="#popMovieDetailslbl" prefHeight="678.0" prefWidth="348.0" />
+            <Label layoutX="390.0" layoutY="69.0" text="Nom du film : " />
+            <Label layoutX="392.0" layoutY="344.0" text="Durée :" />
+            <Label layoutX="391.0" layoutY="393.0" text="Synopsis :" />
+            <Label layoutX="393.0" layoutY="546.0" text="Avis : " />
+            <Label fx:id="lbl_movieName" layoutX="517.0" layoutY="69.0" prefHeight="17.0" prefWidth="336.0" />
+            <Label fx:id="lbl_movieDuration" layoutX="517.0" layoutY="342.0" prefHeight="21.0" prefWidth="72.0" />
+            <Label fx:id="lbl_movieOverview" layoutX="409.0" layoutY="418.0" prefHeight="118.0" prefWidth="600.0" wrapText="true" />
+            <Label fx:id="lbl_movieRate" layoutX="453.0" layoutY="544.0" prefHeight="21.0" prefWidth="83.0" />
+            <Button fx:id="btn_booking" layoutX="871.0" layoutY="713.0" mnemonicParsing="false" onAction="#booking" prefHeight="43.0" prefWidth="120.0" text="Réserver" />
+            <Label layoutX="391.0" layoutY="162.0" text="Nationalité : " />
+            <Label fx:id="lbl_Nationality" layoutX="517.0" layoutY="162.0" prefHeight="17.0" prefWidth="336.0" />
+            <Label layoutX="391.0" layoutY="251.0" text="Réalisateur(s) :" />
+            <Label fx:id="lbl_dir" layoutX="517.0" layoutY="249.0" prefHeight="22.0" prefWidth="481.0" />
+            <Label layoutX="391.0" layoutY="205.0" text="Genre(s) : " />
+            <Label fx:id="lbl_Genre" layoutX="517.0" layoutY="205.0" prefHeight="21.0" prefWidth="481.0" />
+            <Label layoutX="394.0" layoutY="596.0" text="Salle(s) : " />
+            <Label fx:id="lbl_Room" layoutX="459.0" layoutY="593.0" prefHeight="22.0" prefWidth="163.0" />
+            <Label layoutX="668.0" layoutY="596.0" text="Type de salle : " />
+            <Label fx:id="lbl_RoomType" layoutX="774.0" layoutY="594.0" prefHeight="22.0" prefWidth="150.0" />
+            <Label layoutX="391.0" layoutY="295.0" text="Acteurs(s) :" />
+            <ToolBar layoutX="312.0" prefHeight="50.0" prefWidth="711.0">
+              <items>
+                <Button fx:id="btn_all" contentDisplay="CENTER" mnemonicParsing="false" onAction="#popMoviePosterListView" text="Tous" />
+              </items>
+            </ToolBar>
+            <Label layoutX="393.0" layoutY="646.0" text="Mise  à l'affiche  du  :" />
+            <Label fx:id="lbl_startDateMS" layoutX="529.0" layoutY="644.0" prefHeight="22.0" prefWidth="124.0" />
+            <Label layoutX="722.0" layoutY="646.0" text="Au :" />
+            <Label fx:id="lbl_endDateMS" layoutX="774.0" layoutY="644.0" prefHeight="22.0" prefWidth="169.0" />
+            <TextField fx:id="tf_nbResa" layoutX="672.0" layoutY="716.0" prefHeight="31.0" prefWidth="38.0" text="1" />
+            <Button fx:id="moin" alignment="CENTER" layoutX="644.0" layoutY="716.0" mnemonicParsing="false" onAction="#decrementResa" prefHeight="31.0" prefWidth="30.0" text="-" textAlignment="CENTER" />
+            <Button fx:id="plus" alignment="CENTER" layoutX="709.0" layoutY="716.0" mnemonicParsing="false" onAction="#incrementResa" prefHeight="31.0" prefWidth="31.0" text="+" textAlignment="CENTER" />
+            <Label fx:id="lbl_CastLastname" layoutX="504.0" layoutY="229.0" />
+            <Label fx:id="lbl_DirLastname" layoutX="487.0" layoutY="196.0" />
+            <Label layoutX="391.0" layoutY="114.0" text="Langage(s) : " />
+            <Label fx:id="lbl_Langage" layoutX="516.0" layoutY="114.0" prefHeight="17.0" prefWidth="150.0" />
+            <Label fx:id="lbl_cast" layoutX="516.0" layoutY="293.0" prefHeight="22.0" prefWidth="481.0" />
+            <Label fx:id="lbl_Resa" layoutX="474.0" layoutY="721.0" prefHeight="22.0" prefWidth="156.0" text="Nombre de réservations :" />
+         </children>
+      </Pane>
+      <ToolBar prefHeight="50.0" prefWidth="312.0" styleClass="background">
+         <items>
+            <Label prefHeight="39.0" prefWidth="185.0" text="KINO APPLICATION">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+         </items>
+      </ToolBar>
+   </children>
+</AnchorPane>

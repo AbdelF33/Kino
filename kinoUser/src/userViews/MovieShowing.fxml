@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="userControllers.ShowingController">
+   <children>
+      <Pane prefHeight="600.0" prefWidth="800.0">
+         <children>
+            <ListView fx:id="listView_movieDetails" layoutX="202.0" layoutY="98.0" prefHeight="502.0" prefWidth="398.0" />
+            <ListView layoutX="600.0" layoutY="98.0" prefHeight="502.0" prefWidth="200.0" />
+            <Label layoutX="486.0" layoutY="72.0" text="Détails" />
+            <Label layoutX="657.0" layoutY="72.0" text="Total Réservation" />
+            <ToolBar prefHeight="50.0" prefWidth="800.0">
+               <items>
+                  <Label text="KINO - Films à l'affiche ">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </items>
+            </ToolBar>
+            <Label layoutX="300.0" layoutY="72.0" text="Nom du film : " />
+            <Label layoutX="74.0" layoutY="72.0" text="Poster :" />
+            <ImageView fx:id="img_moviePoster" fitHeight="247.0" fitWidth="173.0" layoutX="13.0" layoutY="98.0" pickOnBounds="true" preserveRatio="true" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

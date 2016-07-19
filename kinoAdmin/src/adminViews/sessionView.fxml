@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="adminControllers.SessionController">
+   <children>
+      <Pane prefHeight="600.0" prefWidth="800.0">
+         <children>
+            <ToolBar prefHeight="70.0" prefWidth="400.0">
+              <items>
+                  <Button mnemonicParsing="false" onAction="#gotoHomeView" text="Accueil" />
+                  <Button fx:id="btn_tous" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#popTableView" text="Tous" />
+              </items>
+            </ToolBar>
+            <ToolBar layoutX="400.0" prefHeight="70.0" prefWidth="400.0">
+               <items>
+                  <TextField prefHeight="31.0" prefWidth="284.0" promptText="Tapez votre recherche..." />
+                  <Button mnemonicParsing="false" text="Rechercher" />
+               </items>
+            </ToolBar>
+            <SplitPane dividerPositions="0.3408521303258145" layoutY="70.0" prefHeight="530.0" prefWidth="800.0">
+              <items>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="528.0" prefWidth="267.0">
+                     <children>
+                        <TableView fx:id="tblView_session" prefHeight="528.0" prefWidth="271.0" onMouseClicked="#popFields">
+                          <columns>
+                              <TableColumn fx:id="sessionId" prefWidth="40.0" text="ID" />
+                            <TableColumn fx:id="sMovieName" prefWidth="229.0" text="NOM DU FILM" />
+                          </columns>
+                        </TableView>
+                     </children>
+                  </AnchorPane>
+                  <GridPane prefHeight="528.0" prefWidth="476.0">
+                     <children>
+                        <TextField fx:id="tf_nbResa" promptText="Nombre de réservations *" GridPane.rowIndex="2">
+                           <GridPane.margin>
+                              <Insets left="20.0" right="20.0" />
+                           </GridPane.margin>
+                        </TextField>
+                        <VBox layoutX="535.0" layoutY="180.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                           <children>
+                              <RadioButton id="0" fx:id="rb_non" layoutX="139.0" layoutY="44.0" mnemonicParsing="false" text="Non">
+                                 <toggleGroup>
+                                    <ToggleGroup fx:id="rg_showing" />
+                                 </toggleGroup>
+                              </RadioButton>
+                              <RadioButton id="1" fx:id="rb_oui" layoutX="55.0" layoutY="44.0" mnemonicParsing="false" selected="true" text="Oui" toggleGroup="$rg_showing" />
+                              <Label layoutX="20.0" layoutY="14.0" text="A l'affiche" />
+                           </children>
+                        </Pane>
+                        <VBox GridPane.rowIndex="4">
+                           <children>
+                              <Label fx:id="lbl_erMsg" alignment="TOP_CENTER" layoutX="360.0" layoutY="340.0" prefHeight="39.0" prefWidth="350.0" textAlignment="CENTER" textFill="RED" GridPane.rowIndex="4" />
+                              <Label fx:id="lbl_succesMsg" alignment="TOP_CENTER" prefHeight="42.0" prefWidth="350.0" textAlignment="CENTER" textFill="LIME" />
+                           </children>
+                        </VBox>
+                        <VBox GridPane.columnIndex="1" GridPane.rowIndex="4">
+                           <children>
+                              <Label fx:id="lbl_passError" alignment="TOP_CENTER" prefHeight="39.0" prefWidth="350.0" textAlignment="CENTER" textFill="RED" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                              <Label fx:id="lbl_passMatch" alignment="TOP_CENTER" layoutX="10.0" layoutY="10.0" prefHeight="39.0" prefWidth="350.0" textAlignment="CENTER" textFill="LIME" />
+                           </children>
+                        </VBox>
+                        <ToolBar prefHeight="88.0" prefWidth="243.0" GridPane.rowIndex="5">
+                           <items>
+                              <Button fx:id="btn_cancel" mnemonicParsing="false" prefHeight="30.0" prefWidth="110.0" text="Annuler" />
+                              <Button fx:id="btn_delete" onAction="#deleteSession" mnemonicParsing="false" prefHeight="30.0" prefWidth="110.0" text="Supprimer" />
+                           </items>
+                           <GridPane.margin>
+                              <Insets />
+                           </GridPane.margin>
+                           <padding>
+                              <Insets left="20.0" />
+                           </padding>
+                        </ToolBar>
+                        <ToolBar prefHeight="117.0" prefWidth="315.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                           <items>
+                              <Button fx:id="btn_update" onAction="#editSession" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="30.0" prefWidth="110.0" text="Modifier" textAlignment="CENTER" />
+                              <Button fx:id="btn_duplicate" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="30.0" prefWidth="110.0" text="Dupliquer" textAlignment="CENTER" />
+                           </items>
+                           <GridPane.margin>
+                              <Insets />
+                           </GridPane.margin>
+                           <padding>
+                              <Insets left="20.0" />
+                           </padding>
+                        </ToolBar>
+                        <ComboBox fx:id="cbb_language" promptText="Choix de la langue" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+                        <ComboBox fx:id="cbb_room" promptText="Choix de la salle" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+                        <DatePicker fx:id="dp_starttime" promptText="Date de début *" showWeekNumbers="true" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                        <DatePicker fx:id="dp_enddate" promptText="Date de fin *" showWeekNumbers="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                     </children>
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                  </GridPane>
+              </items>
+            </SplitPane>
+            <Label fx:id="lbl_id" layoutX="10.0" layoutY="33.0" opacity="0.0" prefHeight="32.0" prefWidth="52.0" visible="false" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

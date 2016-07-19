@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="adminControllers.UserController">
+   <children>
+      <Pane prefHeight="600.0" prefWidth="800.0">
+         <children>
+            <ToolBar prefHeight="70.0" prefWidth="400.0">
+              <items>
+                  <Button mnemonicParsing="false" onAction="#gotoHomeView" text="Accueil" />
+                  <Button fx:id="btn_tous" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#btnAllTv" text="Tous" />
+                  <Button fx:id="btn_spAdmin" layoutX="80.0" layoutY="10.0" mnemonicParsing="false" onAction="#btnSpAdminTv" text="Super admin" />
+                  <Button fx:id="btn_admin" mnemonicParsing="false" onAction="#btnAdminTv" text="Admin" />
+              </items>
+            </ToolBar>
+            <ToolBar layoutX="400.0" prefHeight="70.0" prefWidth="400.0">
+               <items>
+                  <TextField prefHeight="31.0" prefWidth="284.0" promptText="Tapez votre recherche..." />
+                  <Button mnemonicParsing="false" text="Rechercher" />
+               </items>
+            </ToolBar>
+            <SplitPane dividerPositions="0.3408521303258145" layoutY="70.0" prefHeight="530.0" prefWidth="800.0">
+              <items>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="528.0" prefWidth="267.0">
+                     <children>
+                        <TableView fx:id="tblView_admin" onMouseClicked="#popUpdateUser" prefHeight="528.0" prefWidth="271.0">
+                          <columns>
+                              <TableColumn fx:id="adminId" prefWidth="40.0" text="ID" />
+                            <TableColumn fx:id="adminLastname" prefWidth="110.0" text="NOM" />
+                            <TableColumn fx:id="adminFirstname" prefWidth="120.0" text="PRENOM" />
+                          </columns>
+                        </TableView>
+                     </children>
+                  </AnchorPane>
+                  <GridPane prefHeight="528.0" prefWidth="476.0">
+                     <children>
+                        <TextField fx:id="tf_firstname" promptText="Prénom *">
+                           <GridPane.margin>
+                              <Insets left="20.0" right="20.0" />
+                           </GridPane.margin>
+                        </TextField>
+                        <TextField fx:id="tf_lastname" promptText="Nom *" GridPane.columnIndex="1">
+                           <GridPane.margin>
+                              <Insets left="20.0" right="20.0" />
+                           </GridPane.margin>
+                        </TextField>
+                        <TextField fx:id="tf_email" promptText="Email" GridPane.rowIndex="1">
+                           <GridPane.margin>
+                              <Insets left="20.0" right="20.0" />
+                           </GridPane.margin>
+                        </TextField>
+                        <TextField fx:id="tf_tel" promptText="Téléphone" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                           <GridPane.margin>
+                              <Insets left="20.0" right="20.0" />
+                           </GridPane.margin>
+                        </TextField>
+                        <TextArea fx:id="ta_adress" prefHeight="200.0" prefWidth="200.0" promptText="Adresse" GridPane.rowIndex="2">
+                           <GridPane.margin>
+                              <Insets left="20.0" right="20.0" />
+                           </GridPane.margin>
+                        </TextArea>
+                        <TextField fx:id="tf_login" promptText="Login *" GridPane.rowIndex="3">
+                           <GridPane.margin>
+                              <Insets left="20.0" right="20.0" />
+                           </GridPane.margin>
+                        </TextField>
+                        <VBox layoutX="535.0" layoutY="180.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                           <children>
+                              <PasswordField fx:id="pf_pass" onKeyReleased="#passMatch" promptText="Mot de passe *">
+                                 <VBox.margin>
+                                    <Insets left="20.0" right="20.0" top="10.0" />
+                                 </VBox.margin>
+                              </PasswordField>
+                              <PasswordField fx:id="pf_confirmPass" onKeyReleased="#passMatch" promptText="Répéter le mot de passe *">
+                                 <opaqueInsets>
+                                    <Insets />
+                                 </opaqueInsets>
+                                 <VBox.margin>
+                                    <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
+                                 </VBox.margin>
+                              </PasswordField>
+                           </children>
+                        </VBox>
+                        <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                           <children>
+                              <RadioButton id="0" fx:id="rb_admin" layoutX="33.0" layoutY="14.0" mnemonicParsing="false" selected="true" text="Admin">
+                                 <toggleGroup>
+                                    <ToggleGroup fx:id="rg_admin" />
+                                 </toggleGroup>
+                              </RadioButton>
+                              <RadioButton id="1" fx:id="rb_spAdmin" layoutX="33.0" layoutY="45.0" mnemonicParsing="false" text="Super Admin" toggleGroup="$rg_admin" />
+                           </children>
+                        </Pane>
+                        <VBox GridPane.rowIndex="4">
+                           <children>
+                              <Label fx:id="lbl_erMsg" alignment="TOP_CENTER" layoutX="360.0" layoutY="340.0" prefHeight="39.0" prefWidth="350.0" textAlignment="CENTER" textFill="RED" GridPane.rowIndex="4" />
+                              <Label fx:id="lbl_succesMsg" alignment="TOP_CENTER" prefHeight="42.0" prefWidth="350.0" textAlignment="CENTER" textFill="LIME" />
+                           </children>
+                        </VBox>
+                        <VBox GridPane.columnIndex="1" GridPane.rowIndex="4">
+                           <children>
+                              <Label fx:id="lbl_passError" alignment="TOP_CENTER" prefHeight="39.0" prefWidth="350.0" textAlignment="CENTER" textFill="RED" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                              <Label fx:id="lbl_passMatch" alignment="TOP_CENTER" layoutX="10.0" layoutY="10.0" prefHeight="39.0" prefWidth="350.0" textAlignment="CENTER" textFill="LIME" />
+                           </children>
+                        </VBox>
+                        <ToolBar prefHeight="88.0" prefWidth="243.0" GridPane.rowIndex="5">
+                           <items>
+                              <Button fx:id="btn_cancel" mnemonicParsing="false" onAction="#cancelButton" prefHeight="30.0" prefWidth="110.0" text="Annuler" />
+                              <Button fx:id="btn_deleteU" mnemonicParsing="false" onAction="#deleteUser" prefHeight="30.0" prefWidth="110.0" text="Supprimer" />
+                           </items>
+                           <GridPane.margin>
+                              <Insets />
+                           </GridPane.margin>
+                           <padding>
+                              <Insets left="20.0" />
+                           </padding>
+                        </ToolBar>
+                        <ToolBar prefHeight="117.0" prefWidth="315.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                           <items>
+                              <Button fx:id="btn_update" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#updateUser" prefHeight="30.0" prefWidth="110.0" text="Modifier" textAlignment="CENTER" />
+                              <Button fx:id="btn_create" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#createUser" prefHeight="30.0" prefWidth="110.0" text="Créer" textAlignment="CENTER" />
+                           </items>
+                           <GridPane.margin>
+                              <Insets />
+                           </GridPane.margin>
+                           <padding>
+                              <Insets left="20.0" />
+                           </padding>
+                        </ToolBar>
+                     </children>
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                  </GridPane>
+              </items>
+            </SplitPane>
+            <Label fx:id="lbl_id" layoutX="10.0" layoutY="33.0" opacity="0.0" prefHeight="32.0" prefWidth="52.0" visible="false" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
